@@ -76,7 +76,7 @@ export default {
     border-radius: 6px;
     box-shadow: 0 10px 10px rgba(black, .2);
     button.modal__close {
-      
+      cursor: pointer;
     }
   }
 }

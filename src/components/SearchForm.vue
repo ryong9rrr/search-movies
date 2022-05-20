@@ -1,10 +1,12 @@
 <template>
   <form @submit.prevent>
-    <label name="search-input">{{ label }}</label>
+    <label
+      class="search-label"
+      name="search-input">{{ label }}</label>
     <input
-      id="search-input"
       ref="input"
       v-model="keyword"
+      class="search-input"
       name="search-input"
       placeholder="영화를 검색해보세요!" 
       autocomplete="off" />
@@ -43,3 +45,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+button {
+  cursor: pointer;
+}
+</style>

@@ -18,7 +18,7 @@
     </ul>
     <Loading v-if="isLoadingMore" />
     <button
-      v-if="movieList.length < totalResults"
+      v-if="movieListLength < totalResults"
       aria-label="search"
       class="more"
       @click="onClickMore">
@@ -67,6 +67,11 @@ export default {
       isLoadingPreview : false,
     };
   },
+  computed: {
+    movieListLength(){
+      return [...this.movieList].length;
+    }
+  },
   methods: {
     onModal(){
       this.isShowModal = true;
@@ -88,8 +93,23 @@ export default {
       }, 500);
     },
     onClickMore(){
-      this.$emit('update:movieList');
+      if (this.movieListLength < this.totalResults) {
+        this.$emit('update:movieList'); 
+      }
     }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+li {
+  cursor: pointer;
+  &:hover{
+    font-weight: 600;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+</style>

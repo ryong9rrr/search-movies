@@ -103,3 +103,21 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.go-top {
+  position: fixed;
+  bottom: 100px;
+  right: 100px;
+  background-color: tomato;
+  opacity: 50%;
+  border-radius: 10px;
+  font-size: 30px;
+  text-align: center;
+  cursor: pointer;
+  &:hover{
+    font-weight: 600;
+    opacity: 80%;
+  }
+}
+</style>
