@@ -6,4 +6,3 @@ dist/
 
 hn.http
 .env
-secret.js
