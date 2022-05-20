@@ -40,7 +40,7 @@ export default {
     };
   },
   mounted(){
-    this.initialize();
+    this.fetchData();
   },
   methods: {
     goHomePage(){
@@ -52,18 +52,16 @@ export default {
     setLoading(state){
       this.isLoading = state;
     },
-    async initialize(){
+    async fetchData(){
       this.setLoading(true);
       const { id } = this.$router.currentRoute.value.params;
-      try {
-        const movieDetailsData = await api.getDetailMovie({ id, full: true });
+      const movieDetailsData = await api.getDetailMovie({ id, full: true });
         if (movieDetailsData.Response === 'True') {
           this.movie = movieDetailsData;
+        } else {
+          window.alert('잘못된 요청입니다. 홈화면으로 이동합니다.');
+          this.goHomePage();          
         }
-      } catch(e) {
-        window.alert('잘못된 경로입니다. 홈화면으로 이동합니다.');
-        this.goHomePage();
-      }
       this.setLoading(false);
     },
   }
